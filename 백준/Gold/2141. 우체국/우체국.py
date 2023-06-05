@@ -1,23 +1,18 @@
-import sys
-input = sys.stdin.readline
+N = int(input())
 
-n = int(input())
-villiage = []
-all = 0
+count = 0
+li = []
+for i in range(N):
+    a, b = map(int, input().split())
+    li.append([a, b])
+    count += b
 
-for _ in range(n):
-    xi, ai = map(int, input().split())
-    villiage.append((xi, ai))
-    all += ai
+li.sort()
 
-villiage.sort(key=lambda x: (x[0]))
-
-now = 0
-ans = 0
-for i in range(n):
-    now += villiage[i][1]
-    if now >= all / 2:
-        ans = villiage[i][0]
+target = count / 2
+sum_ = 0
+for i in li:
+    sum_ += i[1]
+    if sum_ >= target:
+        print(i[0])
         break
-
-print(ans)
